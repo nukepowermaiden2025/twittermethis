@@ -3,8 +3,9 @@ mono: none
 dotnet: 2.0.0
 
 install:
-- dotnet restore
+- dotnet build
 
 script:
  - dotnet build TwitterMeThis
+
    
