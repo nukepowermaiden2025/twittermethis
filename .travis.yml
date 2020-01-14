@@ -3,8 +3,8 @@ mono: none
 dotnet: 2.0.0
 
 install:
-- dotnet clean
-- dotnet build 
+- dotnet clean TwitterMeThis
+- dotnet build TwitterMeThis
 
 script:
  - dotnet build TwitterMeThis
