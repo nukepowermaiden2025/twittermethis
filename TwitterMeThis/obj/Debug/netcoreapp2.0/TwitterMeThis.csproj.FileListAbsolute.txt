@@ -1,0 +1,11 @@
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/bin/Debug/netcoreapp2.0/TwitterMeThis.deps.json
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/bin/Debug/netcoreapp2.0/TwitterMeThis.runtimeconfig.json
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/bin/Debug/netcoreapp2.0/TwitterMeThis.runtimeconfig.dev.json
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/bin/Debug/netcoreapp2.0/TwitterMeThis.dll
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/bin/Debug/netcoreapp2.0/TwitterMeThis.pdb
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/obj/Debug/netcoreapp2.0/TwitterMeThis.csprojAssemblyReference.cache
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/obj/Debug/netcoreapp2.0/TwitterMeThis.csproj.CoreCompileInputs.cache
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/obj/Debug/netcoreapp2.0/TwitterMeThis.AssemblyInfoInputs.cache
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/obj/Debug/netcoreapp2.0/TwitterMeThis.AssemblyInfo.cs
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/obj/Debug/netcoreapp2.0/TwitterMeThis.dll
+/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/obj/Debug/netcoreapp2.0/TwitterMeThis.pdb
