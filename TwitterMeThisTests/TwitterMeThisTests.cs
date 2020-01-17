@@ -3,7 +3,7 @@ using Xunit;
 
 namespace TwitterMeThisTests
 {
-    public class UnitTest1
+    public class TwitterMeThisTests
     {
         [Fact]
         public void Test1()
