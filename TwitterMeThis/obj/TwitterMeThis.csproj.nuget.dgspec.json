@@ -4,14 +4,14 @@
     "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/TwitterMeThis.csproj": {}
   },
   "projects": {
-    "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/TwitterMeThis.csproj": {
+    "/home/hidigitalkourt/learning/twittermethis/Models/Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/TwitterMeThis.csproj",
-        "projectName": "TwitterMeThis",
-        "projectPath": "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/TwitterMeThis.csproj",
+        "projectUniqueName": "/home/hidigitalkourt/learning/twittermethis/Models/Models.csproj",
+        "projectName": "Models",
+        "projectPath": "/home/hidigitalkourt/learning/twittermethis/Models/Models.csproj",
         "packagesPath": "/home/hidigitalkourt/.nuget/packages/",
-        "outputPath": "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/obj/",
+        "outputPath": "/home/hidigitalkourt/learning/twittermethis/Models/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -47,16 +47,64 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
+          "warn": true
+        }
+      }
+    },
+    "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/TwitterMeThis.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/TwitterMeThis.csproj",
+        "projectName": "TwitterMeThis",
+        "projectPath": "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/TwitterMeThis.csproj",
+        "packagesPath": "/home/hidigitalkourt/.nuget/packages/",
+        "outputPath": "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/hidigitalkourt/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/home/hidigitalkourt/learning/twittermethis/Models/Models.csproj": {
+                "projectPath": "/home/hidigitalkourt/learning/twittermethis/Models/Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
         }
       }
     }

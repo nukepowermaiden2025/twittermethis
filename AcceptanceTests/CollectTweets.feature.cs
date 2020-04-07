@@ -108,26 +108,28 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 4
-   testRunner.Given("the twitter api responds with", "{\n   \"created_at\": \"Wed Oct 10 20:19:24 +0000 2018\",\n   \"id\": 1050118621198921700" +
-                        ",\n   \"id_str\": \"1050118621198921728\",\n   \"text\": \"To make room for more expressi" +
-                        "on, we will now count all political speech as negative\",\n   \"user\": {},\n   \"enti" +
-                        "ties\": {}\n}", ((TechTalk.SpecFlow.Table)(null)), "Given ");
+   testRunner.Given("the twitter api responds with", @"{
+     ""created_at"": ""Tue Feb 04 04:27:51 +0000 2020"",
+     ""id_str"": ""1224550106462138368"",
+     ""text"": ""Big WIN for us in Iowa tonight. Thank you!"",
+     ""truncated"": false,
+     ""user"": {
+         ""screen_name"": ""realDonaldTrump"",
+         },
+     ""is_quote_status"": false,
+     ""retweet_count"": 1467,
+     ""favorite_count"": 5989,
+     ""favorited"": false,
+     ""retweeted"": false,
+ }", ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
+#line 21
    testRunner.When("I trigger the function CollectTweets", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
-   testRunner.Then("I expect my json file to have", @"[
-   {
-      ""created_at"": ""Wed Oct 10 20:19:24 +0000 2018"",
-      ""id"": 1050118621198921700,
-      ""id_str"": ""1050118621198921728"",
-      ""text"": ""To make room for more expression, we will now count all political speech as negative"",
-      ""user"": {},
-      ""entities"": {},
-      ""is_positive"" : false
-   }
-]", ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 22
+   testRunner.Then("I expect my json file to have", "[\n   {\n     \"created_at\": \"Tue Feb 04 04:27:51 +0000 2020\",\n     \"id_str\": \"12245" +
+                        "50106462138368\",\n     \"text\": \"Big WIN for us in Iowa tonight. Thank you!\",    \n" +
+                        "     \"screen_name\": \"realDonaldTrump\",\n     \"is_positive\" : true\n   }\n]", ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

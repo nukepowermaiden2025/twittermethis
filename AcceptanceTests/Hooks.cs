@@ -9,7 +9,7 @@ namespace AcceptanceTests
 
     public static class Hooks
     {
-        public static FluentMockServer TwitterStub;
+        public static WireMockServer TwitterStub;
 
         [BeforeTestRun]
         private static void BeforeTestRun()
