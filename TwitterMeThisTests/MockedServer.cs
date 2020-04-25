@@ -5,7 +5,7 @@ namespace InvoicingTests
 {
     public class MockedServer : IDisposable
     {
-        public WireMockServer MockServer { get; private set; }
+        public FluentMockServer MockServer { get; private set; }
 
         public MockedServer()
         {
