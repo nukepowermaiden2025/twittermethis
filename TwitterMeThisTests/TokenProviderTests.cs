@@ -49,17 +49,13 @@ namespace TwitterMeThisTests
                     .WithBody(@"{'access_token':'here is your login token for twitter'}")      
             );
             
-          
             var tokenProvider = new TokenProvider(hostname, consumerKey, consumerSecret);
             var token = await tokenProvider.GetToken();
 
             var allReqs = server.LogEntries;
             var jsonLogs = JsonConvert.SerializeObject(allReqs, Formatting.Indented);
             Console.WriteLine(jsonLogs);
-            Console.WriteLine($"There are a total of {server.LogEntries.Count()} Logs");
-            server.DeleteLogEntry(new Guid("5f14361f-b864-4159-b222-86df47cdbf2d"));
-            Console.WriteLine("The Logs have been deleted ",jsonLogs);
-
+            
             token.Should().Be("here is your login token for twitter");
              
         }

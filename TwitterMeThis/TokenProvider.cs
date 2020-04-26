@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 
 namespace TwitterMeThis
 {
+   
     public class TokenProvider 
     {
         private string consumerKey;
@@ -25,6 +26,19 @@ namespace TwitterMeThis
 
         public async Task<string> GetToken()
         {
+            var response = await client.SendAsync(BuildHttpRquestMessage());
+            var body = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException("Token Request Exception: " +
+                    $"Status {response.StatusCode}, Reason {response.ReasonPhrase}, Body {body}");
+            }
+            var responseJson = JObject.Parse(body);
+            return responseJson["access_token"].ToString();
+        }
+
+        private HttpRequestMessage BuildHttpRquestMessage()
+        {
             var url = QueryHelpers.AddQueryString(client.BaseAddress.ToString(), "grant_type", "client_credentials");
             var authorization = ConvertKeyAndSecretToBase64String();
             var request = new HttpRequestMessage()
@@ -34,19 +48,7 @@ namespace TwitterMeThis
                 RequestUri = new Uri(url)
             };
             request.Headers.Authorization = new AuthenticationHeaderValue($"Basic", $"{authorization}");
-
-            var response = await client.SendAsync(request);
-            if (!response.IsSuccessStatusCode)
-            {
-                var body = await response.Content.ReadAsStringAsync();
-                throw new HttpRequestException("Token Request Exception: " +
-                    $"Status {response.StatusCode}, Reason {response.ReasonPhrase}, Body {body}");
-            }
-            else
-            {
-                var responseJson = JObject.Parse(await response.Content.ReadAsStringAsync());
-                return responseJson["access_token"].ToString();
-            } 
+            return request;
         }
 
         private string ConvertKeyAndSecretToBase64String()
