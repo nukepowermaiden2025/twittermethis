@@ -16,6 +16,8 @@ Scenario: Collects tweets
         "favorite_count": 5989,
         "favorited": false,
         "retweeted": false,
+        "possibly_sensitive": false
+
     }
    """
    When I trigger the function CollectTweets
