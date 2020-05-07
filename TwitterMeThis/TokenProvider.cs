@@ -9,7 +9,10 @@ using Newtonsoft.Json.Linq;
 
 namespace TwitterMeThis
 {
-   
+    public interface ITokenProvider
+    {
+        Task<string> GetToken();
+    }
     public class TokenProvider 
     {
         private string consumerKey;

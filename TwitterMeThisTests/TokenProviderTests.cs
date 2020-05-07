@@ -51,11 +51,7 @@ namespace TwitterMeThisTests
             
             var tokenProvider = new TokenProvider(hostname, consumerKey, consumerSecret);
             var token = await tokenProvider.GetToken();
-
-            var allReqs = server.LogEntries;
-            var jsonLogs = JsonConvert.SerializeObject(allReqs, Formatting.Indented);
-            Console.WriteLine(jsonLogs);
-            
+       
             token.Should().Be("here is your login token for twitter");
              
         }
