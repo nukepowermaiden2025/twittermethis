@@ -34,7 +34,7 @@ namespace TwitterMeThisTests
         public async Task GetsTweets()
         {
             var screenName = "supercooluser";
-            var excludeReplies = true;
+            var excludeReplies = "true";
             var count = "1";
             
             server.Given(
@@ -43,28 +43,30 @@ namespace TwitterMeThisTests
                     .WithParam("screen_name", screenName)
                     .WithParam("exclude_replies", excludeReplies)
                     .WithParam("count", count)
+                    .WithHeader("Authorization",$"Bearer token")
                     .UsingGet()
             )
             .RespondWith(
                 Response.Create()
                     .WithStatusCode(200)
-                    .WithBody(@"{[
-                        {
-                            'created_at': 'Thu Apr 06 15:28:43 +0000 2020',
-                            'id_str': '850007368138018817',
-                            'text': 'RT @TwitterDev: 1/ Today we’re sharing our plan for the future',
-                            'user': {
-                                'id_str': '6253282',
-                                'screen_name': 'twitterapi'
+                    .WithBody(@"
+                    [
+                        {      
+                            ""created_at"": ""Thu Apr 06 15:28:43 +0000 2020"",
+                            ""id_str"": ""850007368138018817"",
+                            ""text"": ""RT @TwitterDev: 1/ Today we’re sharing our plan for the future"",
+                            ""user"": {
+                                ""id_str"": ""6253282"",
+                                ""screen_name"": ""twitterapi""
                                 },
-                            'is_quote_status': false,
-                            'retweet_count': 284,
-                            'favorite_count': 0,
-                            'favorited': false,
-                            'retweeted': false,
-                            'possibly_sensitive': true
+                            ""is_quote_status"": false,
+                            ""retweet_count"": 284,
+                            ""favorite_count"": 0,
+                            ""favorited"": false,
+                            ""retweeted"": false,
+                            ""possibly_sensitive"": true
                         }
-                    ]}"
+                    ]"
                 )    
             );
 
@@ -72,9 +74,9 @@ namespace TwitterMeThisTests
             {
                 new TwitterResponse()
                 {
-                    CreatedAt = new DateTime(2020, 04, 06, 15, 28, 43, DateTimeKind.Utc),
+                    Created_At = "Thu Apr 06 15:28:43 +0000 2020",
                     Id_Str = "850007368138018817",
-                    TweetText = "RT @TwitterDev: 1/ Today we’re sharing our plan for the future",
+                    Text = "RT @TwitterDev: 1/ Today we’re sharing our plan for the future",
                     User = new User() 
                         {
                         Screen_Name = "twitterapi"
@@ -84,16 +86,16 @@ namespace TwitterMeThisTests
                     Favorite_Count = 0,
                     Retweeted = false,
                     Favorited = false,
-                    Possibly_Sensative = true
+                    Possibly_Sensitive = true
                 }
             };
 
-            var client = new TwitterClient(hostname, mockTokenProvider);
+            var client = new TwitterClient(hostname, mockTokenProvider, screenName);
             var actual = await client.CollectTweets();
 
             var allReqs = server.LogEntries;
             var jsonLogs = JsonConvert.SerializeObject(allReqs, Formatting.Indented);
-            Console.WriteLine(jsonLogs);
+            // Console.WriteLine(jsonLogs);
 
             actual.Should().BeEquivalentTo(expected);
 
