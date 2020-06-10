@@ -121,12 +121,14 @@ this.ScenarioInitialize(scenarioInfo);
      ""favorite_count"": 5989,
      ""favorited"": false,
      ""retweeted"": false,
+     ""possibly_sensitive"": false
+
  }", ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 21
+#line 23
    testRunner.When("I trigger the function CollectTweets", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
+#line 24
    testRunner.Then("I expect my json file to have", "[\n   {\n     \"created_at\": \"Tue Feb 04 04:27:51 +0000 2020\",\n     \"id_str\": \"12245" +
                         "50106462138368\",\n     \"text\": \"Big WIN for us in Iowa tonight. Thank you!\",    \n" +
                         "     \"screen_name\": \"realDonaldTrump\",\n     \"is_positive\" : true\n   }\n]", ((TechTalk.SpecFlow.Table)(null)), "Then ");

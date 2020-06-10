@@ -45,8 +45,8 @@ namespace TwitterMeThis
                 );
             }
             var twitterResponses = JArray.Parse(body);
-            var tweets = twitterResponses.Select( t => t.ToObject<TwitterResponse>());
-            return tweets;
+            return twitterResponses.Select( t => t.ToObject<TwitterResponse>());
+        
             
         }
 
