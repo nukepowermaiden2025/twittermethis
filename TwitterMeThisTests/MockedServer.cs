@@ -1,7 +1,7 @@
 using System;
 using WireMock.Server;
 
-namespace InvoicingTests
+namespace TwitterMeThisTests
 {
     public class MockedServer : IDisposable
     {

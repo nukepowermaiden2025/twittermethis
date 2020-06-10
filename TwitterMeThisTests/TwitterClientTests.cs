@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using InvoicingTests;
 using Models;
 using Moq;
 using Newtonsoft.Json;
