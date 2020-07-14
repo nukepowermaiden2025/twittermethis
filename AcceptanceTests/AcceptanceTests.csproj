@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\TwitterMeThis\TwitterMeThis.csproj" />
+    <ProjectReference Include="..\TwitterMeThisTests\TwitterMeThisTests.csproj" />
   </ItemGroup>
 
 </Project>

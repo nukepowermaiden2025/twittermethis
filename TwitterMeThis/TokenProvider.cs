@@ -13,7 +13,7 @@ namespace TwitterMeThis
     {
         Task<string> GetToken();
     }
-    public class TokenProvider 
+    public class TokenProvider : ITokenProvider
     {
         private string consumerKey;
         private string consumerSecret;

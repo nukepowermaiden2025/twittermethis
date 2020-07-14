@@ -11,17 +11,39 @@ using Newtonsoft.Json;
 using TwitterMeThis;
 using FluentAssertions;
 using System.Collections.Generic;
+using Xunit;
+using TwitterMeThisTests;
 
 namespace AcceptanceTests
 {
     [Binding]
     
-    public class CollectTweetsSteps
+    public class CollectTweetsSteps :IClassFixture<MockedServer>
     {
-        //Need a place to store the twitter results
         public StreamReader streamreader;
+
+        [Given(@"the twitter login api responds with")]
+        public void TheTwitterLoginApiRespondsWith(string tokenJson)
+        {
+            var auth = "Base64StringWithConsumerKeyAndSecret";
+            Hooks.TwitterStub.Given(
+                Request.Create()
+                    .WithPath($"/oauth2/token")
+                    .WithHeader("Authorization",$"Basic {auth}")
+                    .WithHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8")
+                    .UsingPost()
+            )
+            .RespondWith(
+                Response.Create()
+                    .WithStatusCode(200)
+                    .WithHeader("Content-Type","application/json; charset=utf-8")
+                    .WithHeader("Content-Encoding","gzip")
+                    .WithHeader("Content-Length","140")
+                    .WithBody(tokenJson)      
+            );
+        }        
         [Given(@"the twitter api responds with")]
-        public void GivenTheTwitterApiRespondsWith(string tweetsJson)
+        public void TheTwitterApiRespondsWith(string tweetsJson)
         {
             Hooks.TwitterStub.Given(
                 Request.Create()
@@ -36,18 +58,19 @@ namespace AcceptanceTests
                         .WithBody(tweetsJson));
         }
 
-        [When(@"I trigger the function CollectTweets")]
-        public void WhenITriggerTheFunctionCollectTweets()
+        [When(@"I trigger the function GetTweets")]
+        public async Task ITriggerTheFunctionGetTweets()
         {
-            var tweets = new TwitterClient();
-            //This is the place that the prod code will be tested
+            var getTweets = new GetTweets();
+            await getTweets.RunAsync();
+            
         }
-
+        
         [Then(@"I expect my json file to have")]
         public void ThenIExpectMyJsonFileToHave(string expectedJson)
         {
             var expected = JsonConvert.DeserializeObject<IEnumerable<Tweet>>(expectedJson);
-            var actualTweets = TweetTransformer.TwitterResponseToDesignatedTweet();
+            //I need to read the file that the previous code generates and compare it the the json that I am submitting
 
             actualTweets.Should().BeEquivalentTo(expected);
 
