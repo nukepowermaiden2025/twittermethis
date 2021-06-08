@@ -7,7 +7,7 @@ export TWITTER_LOGIN_HOSTNAME="http://localhost:5000"
 export CONSUMER_KEY="fakeconsumerkey"
 export CONSUMER_SECRET="fakeconsumersecret"
 export TWITTER_CLIENT_HOSTNAME="http://localhost:5001"
-export SCREEN_NAME="realDonaldTrump"
+export SCREEN_NAME="vaccinefinder"
 
 echo Running acceptance tests
 

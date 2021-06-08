@@ -28,7 +28,7 @@ Scenario: Collects tweets
   }
   """
   When I trigger the function GetTweets
-  Then I expect my json file to have
+  Then I expect a file named twitter.json to have
   """
   [
     {

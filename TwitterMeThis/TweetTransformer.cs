@@ -12,11 +12,11 @@ namespace TwitterMeThis
             var recordDate = DateTime.UtcNow;
             var tweets = responses.Select(x => new Tweet()
                 {
-                    RecordDate = recordDate.ToString(),
+                    CreatedAt = recordDate.ToString(),
                     Id = x.Id_Str,
                     Text = x.Text,
                     ScreenName = x.User.Screen_Name,
-                    IsPositive = (x.Possibly_Sensitive || DetermineIfIsPositive(x.Text)) ? false : true
+                    IsPositive = (x.Possibly_Sensitive || DetermineIfIsPositive(x.Text)) ? false : true //Dont neet to explicily say true or false
                 }
             );
             return tweets;
@@ -40,6 +40,7 @@ namespace TwitterMeThis
                 "mayors",
                 "media"
             };
+            //This can just use the boolean
             var foundWords = new List<string>();
             foreach( var indicator in negativeIndicators)
             {

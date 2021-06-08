@@ -42,7 +42,7 @@ namespace TwitterMeThisTests
             {
                 new Tweet()
                 {
-                    RecordDate = recordDate.ToString(),
+                    CreatedAt = recordDate.ToString(),
                     Id = id,
                     Text = text,
                     ScreenName = screenName,
@@ -87,7 +87,7 @@ namespace TwitterMeThisTests
             {
                 new Tweet()
                 {
-                    RecordDate = recordDate.ToString(),
+                    CreatedAt = recordDate.ToString(),
                     Id = id,
                     Text = text,
                     ScreenName = screenName,
@@ -132,7 +132,7 @@ namespace TwitterMeThisTests
             {
                 new Tweet()
                 {
-                    RecordDate = recordDate.ToString(),
+                    CreatedAt = recordDate.ToString(),
                     Id = id,
                     Text = text,
                     ScreenName = screenName,

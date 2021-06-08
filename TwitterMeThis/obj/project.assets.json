@@ -506,35 +506,37 @@
     ]
   },
   "packageFolders": {
-    "/home/hidigitalkourt/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/Users/hidigitalkourt/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/TwitterMeThis.csproj",
+      "projectUniqueName": "/Users/hidigitalkourt/kata/twittermethis/TwitterMeThis/TwitterMeThis.csproj",
       "projectName": "TwitterMeThis",
-      "projectPath": "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/TwitterMeThis.csproj",
-      "packagesPath": "/home/hidigitalkourt/.nuget/packages/",
-      "outputPath": "/home/hidigitalkourt/learning/twittermethis/TwitterMeThis/obj/",
+      "projectPath": "/Users/hidigitalkourt/kata/twittermethis/TwitterMeThis/TwitterMeThis.csproj",
+      "packagesPath": "/Users/hidigitalkourt/.nuget/packages/",
+      "outputPath": "/Users/hidigitalkourt/kata/twittermethis/TwitterMeThis/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/hidigitalkourt/.nuget/NuGet/NuGet.Config"
+        "/Users/hidigitalkourt/kata/twittermethis/NuGet.Config",
+        "/Users/hidigitalkourt/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/HISC/_packaging/HISC/nuget/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/home/hidigitalkourt/learning/twittermethis/Models/Models.csproj": {
-              "projectPath": "/home/hidigitalkourt/learning/twittermethis/Models/Models.csproj"
+            "/Users/hidigitalkourt/kata/twittermethis/Models/Models.csproj": {
+              "projectPath": "/Users/hidigitalkourt/kata/twittermethis/Models/Models.csproj"
             }
           }
         }
@@ -564,10 +566,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,6 +13,8 @@ using FluentAssertions;
 using System.Collections.Generic;
 using Xunit;
 using TwitterMeThisTests;
+using System.Threading;
+using Newtonsoft.Json.Linq;
 
 namespace AcceptanceTests
 {
@@ -49,8 +51,9 @@ namespace AcceptanceTests
                 Request.Create()
                 .WithPath("/1.1/statuses/user_timeline.json")
                 .WithParam("user_id")
-                .WithHeader("Authorization", "Bearer of a token")
-                .UsingGet())
+                .WithHeader("Authorization", "a superlong token")
+                .UsingGet()
+                )
                 .RespondWith(
                     Response.Create()
                         .WithStatusCode(200)
@@ -66,14 +69,25 @@ namespace AcceptanceTests
             
         }
         
-        [Then(@"I expect my json file to have")]
+        [Then(@"I expect a file named twitter.json to have")]
         public void ThenIExpectMyJsonFileToHave(string expectedJson)
-        {
-            var expected = JsonConvert.DeserializeObject<IEnumerable<Tweet>>(expectedJson);
-            //I need to read the file that the previous code generates and compare it the the json that I am submitting
+        {   
+            var filePath = "//Users//hidigitalkourt//kata//twittermethis//twitter.json";
+            
+            for (int count = 0; count < 20 && !File.Exists(filePath); count++)
+            {
+                Thread.Sleep(1000);
+            }
 
-            actualTweets.Should().BeEquivalentTo(expected);
+            var actual = new List<Tweet>();
+            using (StreamReader file = new StreamReader(filePath))
+            {
+                string json = file.ReadToEnd();
+                actual.AddRange(JsonConvert.DeserializeObject<List<Tweet>>(json));
+            }
+            var expected = JsonConvert.DeserializeObject<List<Tweet>>(expectedJson);
 
+            actual.Should().BeEquivalentTo(expected);
         }
     }
 }
