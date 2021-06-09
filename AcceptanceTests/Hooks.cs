@@ -14,7 +14,7 @@ namespace AcceptanceTests
 
         private static void StartFakeTwitterLogin()
         {
-            TwitterStub = WireMockServer.Start( new WireMockServerSettings
+            TwitterLoginStub = WireMockServer.Start( new WireMockServerSettings
             {
                 Urls = new[] {"http://localhost:5000"},
                 StartAdminInterface = true
@@ -40,8 +40,8 @@ namespace AcceptanceTests
         private static void BeforeScenario(ScenarioContext currentScenario)
         {
             Console.WriteLine($"Starting Scenario: {currentScenario.ScenarioInfo.Title}");
-            // TwitterLoginStub.Reset();
-            // TwitterStub.Reset();
+            TwitterLoginStub.Reset();
+            TwitterStub.Reset();
 
         }
 

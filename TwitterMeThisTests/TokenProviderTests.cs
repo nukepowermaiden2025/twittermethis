@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Newtonsoft.Json;
 using TwitterMeThis;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
@@ -25,17 +26,17 @@ namespace TwitterMeThisTests
         [Fact]
         public async Task GetsLoginToken()
         {
-           
+            
             var textBytes = Encoding.UTF8.GetBytes($"{consumerKey}:{consumerSecret}");
             var auth = Convert.ToBase64String(textBytes);
-
-            server.Given(
-                Request.Create()
+            var request = Request.Create()
                     .WithPath($"/oauth2/token")
                     .WithHeader("Authorization",$"Basic {auth}")
                     .WithHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8")
-                    .UsingPost()
-            )
+                    .WithParam("grant_type", new string[]{"client_crediatials"})
+                    .UsingPost();
+
+            server.Given(request)
             .RespondWith(
                 Response.Create()
                     .WithStatusCode(200)
@@ -44,6 +45,9 @@ namespace TwitterMeThisTests
                     .WithHeader("Content-Length","140")
                     .WithBody(@"{'access_token':'here is your login token for twitter'}")      
             );
+
+            Console.WriteLine("########################## UNIT TEST REQUEST  URL ################");
+            Console.WriteLine(JsonConvert.SerializeObject(request));
             
             var tokenProvider = new TokenProvider(hostname, consumerKey, consumerSecret);
             var token = await tokenProvider.GetToken();

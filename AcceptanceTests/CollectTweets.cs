@@ -22,17 +22,17 @@ namespace AcceptanceTests
     
     public class CollectTweetsSteps :IClassFixture<MockedServer>
     {
-        public StreamReader streamreader;
 
         [Given(@"the twitter login api responds with")]
         public void TheTwitterLoginApiRespondsWith(string tokenJson)
         {
             var auth = "Base64StringWithConsumerKeyAndSecret";
-            Hooks.TwitterStub.Given(
+            Hooks.TwitterLoginStub.Given(
                 Request.Create()
                     .WithPath($"/oauth2/token")
                     .WithHeader("Authorization",$"Basic {auth}")
-                    .WithHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8")
+                    .WithParam("grant_type", "client_credentials")
+                    .WithHeader("Content-Type","application/x-www-form-urlencoded; charset=utf-8")
                     .UsingPost()
             )
             .RespondWith(
@@ -43,7 +43,8 @@ namespace AcceptanceTests
                     .WithHeader("Content-Length","140")
                     .WithBody(tokenJson)      
             );
-        }        
+        }  
+
         [Given(@"the twitter api responds with")]
         public void TheTwitterApiRespondsWith(string tweetsJson)
         {

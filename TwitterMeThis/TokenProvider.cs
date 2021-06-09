@@ -31,6 +31,9 @@ namespace TwitterMeThis
         {
             var response = await client.SendAsync(BuildHttpRquestMessage());
             var body = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("RESPONSE STATUS CODE");
+            Console.WriteLine(response.StatusCode);
+
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException("Token Request Exception: " +
@@ -42,7 +45,8 @@ namespace TwitterMeThis
 
         private HttpRequestMessage BuildHttpRquestMessage()
         {
-            var url = QueryHelpers.AddQueryString(client.BaseAddress.ToString(), "grant_type", "client_credentials");
+            var url = QueryHelpers.AddQueryString(client.BaseAddress.ToString(), "grant_type", "client_crediatials");
+
             var authorization = ConvertKeyAndSecretToBase64String();
             var request = new HttpRequestMessage()
             {
@@ -50,7 +54,10 @@ namespace TwitterMeThis
                 Method = new HttpMethod("Post"),
                 RequestUri = new Uri(url)
             };
+
             request.Headers.Authorization = new AuthenticationHeaderValue($"Basic", $"{authorization}");
+            Console.WriteLine("########### REQUEST !!###########");
+            Console.WriteLine(request);
             return request;
         }
 
